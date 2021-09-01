@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>卡片管理</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+  <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+  <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+  <link href="files/卡片管理/styles1.css" type="text/css" rel="stylesheet"/>
+  <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+  <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+  <script src="resources/scripts/prototypePre.js"></script>
+  <script src="data/document.js"></script>
+  <script src="resources/scripts/prototypePost.js"></script>
+  <script src="files/卡片管理/data.js"></script>
+  <script type="text/javascript">
+    $axure.utils.getTransparentGifPath = function () {
+      return 'resources/images/transparent.gif';
+    };
+    $axure.utils.getOtherPath = function () {
+      return 'resources/Other.html';
+    };
+    $axure.utils.getReloadPath = function () {
+      return 'resources/reload.html';
+    };
+  </script>
+</head>
+<body style="
+    height: 100%;
+    width: 100%;
+    margin-top: -97px;
+    overflow: hidden;
+">
+<div id="base" class="">
+
+  <!-- Unnamed (矩形) -->
+  <div id="u12" class="ax_default box_2">
+    <div id="u12_div" class=""  style="overflow-y: overlay;">
+    </div>
+  </div>
+
+  <!-- Unnamed (水平线) -->
+  <div id="u13" class="ax_default line">
+    <img id="u13_img" class="img " src="images/卡片管理/u13.png"/>
+  </div>
+
+  <!-- Unnamed (矩形) -->
+  <div class="ax_default u14 button" onclick="showpanle(null,'add')">
+    <div id="u14_div" class=""></div>
+    <div id="u14_text" class="text ">
+      <p><span>新增</span></p>
+    </div>
+  </div>
+
+  <!-- Unnamed (矩形) -->
+  <div id="u15" class="ax_default button" onclick="searchpanle($('#u16_input').val())">
+    <div id="u15_div" class=""></div>
+    <div id="u15_text" class="text">
+      <p><span>查询</span></p>
+    </div>
+  </div>
+  <!-- Unnamed (矩形) -->
+  <div  id="dc" class="ax_default button" onclick='tableToExcel()'>
+    <div id="dc_div" class=""></div>
+    <div id="dc_text" class="text ">
+      <p><span>导出</span></p>
+    </div>
+  </div>
+  <div  id="dr" class="ax_default button">
+    <div id="dr_div" class=""></div>
+    <div id="dr_text" class="text ">
+      <div style="left: 60px;position: absolute;"><p><span>导入</span></p></div>
+      <input style="opacity: 0;height: 42px;width: 213px;cursor: pointer;" type="file" onchange="top.importExcel(this,'INSERT INTO CARD (id,code,img,name,quota,type,description,createtime) VALUES (?,?,?,?,?,?,?,?)')"/>
+
+    </div>
+  </div>
+
+  <!-- Unnamed (文本框) -->
+  <div id="u16" class="ax_default text_field">
+    <input id="u16_input"  onblur="openfoucs()"  type="text" value=""/>
+  </div>
+
+  <!-- 卡 (组合 ) -->
+  <div id="u151" class="ax_default ax_default_hidden" data-id="" data-time="" data-label="卡" style="display:none; visibility: hidden"
+       data-left="0" data-top="0" data-width="0" data-height="0">
+    <!-- Unnamed (矩形) -->
+    <div id="u152" class="ax_default box_2">
+      <div id="u152_div" class=""></div>
+    </div>
+
+    <!-- Unnamed (矩形) -->
+    <div id="u153" class="ax_default box_2">
+      <div id="u153_div" class=""></div>
+    </div>
+
+    <!-- Unnamed (图片 ) -->
+
+    <div class="ax_default u154 image">
+      <img id="u154_img" class="img " src="" alt=""/>
+    </div>
+    <input id="u154" class="ax_default image u154" type="file" style="opacity: 0;" onchange="changeImg(this)"/>
+
+    <!-- Unnamed (矩形) -->
+    <div id="u155" class="ax_default primary_button" onclick="savepanle()">
+      <div id="u155_div" class=""></div>
+      <div id="u155_text" class="text ">
+        <p><span>保存</span></p>
+      </div>
+    </div>
+
+    <!-- Unnamed (矩形) -->
+    <div class="ax_default primary_button u156" style="cursor: pointer;" onclick="closepanle()">
+      <div id="u156_div" class=""></div>
+      <div id="u156_text" class="text ">
+        <p><span>取消</span></p>
+      </div>
+    </div>
+
+    <!-- Unnamed (矩形) -->
+    <div id="u157" class="ax_default _三级标题">
+      <div id="u157_div" class=""></div>
+      <div id="u157_text" class="text ">
+        <p><span>卡片编码</span></p>
+      </div>
+    </div>
+
+    <!-- Unnamed (矩形) -->
+    <div id="u158" class="ax_default label">
+      <div id="u158_div" class=""></div>
+      <div id="u158_text" class="text">
+        <p><span id="u158_input"></span></p>
+      </div>
+    </div>
+
+    <!-- Unnamed (矩形) -->
+    <div id="u159" class="ax_default _三级标题">
+      <div id="u159_div" class=""></div>
+      <div id="u159_text" class="text ">
+        <p><span>卡片名称</span></p>
+      </div>
+    </div>
+
+    <!-- Unnamed (文本框) -->
+    <div id="u160" class="ax_default text_field">
+      <input id="u160_input" type="text" value=""/>
+    </div>
+
+    <!-- Unnamed (矩形) -->
+    <div id="u161" class="ax_default _三级标题">
+      <div id="u161_div" class=""></div>
+      <div id="u161_text" class="text ">
+        <p><span>消费额度</span></p>
+      </div>
+    </div>
+
+    <!-- Unnamed (文本框) -->
+    <div id="u162" class="ax_default text_field">
+      <input id="u162_input" type="number" min="0"  step="0.01" value=""/>
+    </div>
+
+    <!-- Unnamed (矩形) -->
+    <div id="u163" class="ax_default box_1">
+      <textarea id="u163_div"></textarea>
+    </div>
+
+    <!-- Unnamed (矩形) -->
+    <div id="u164" class="ax_default _三级标题">
+      <div id="u164_div" class=""></div>
+      <div id="u164_text" class="text ">
+        <p><span>资金池</span></p>
+      </div>
+    </div>
+
+    <!-- Unnamed (单选按钮) -->
+    <div id="u165" class="ax_default radio_button">
+      <label for="u165_input" style="position: absolute; left: 0px;">
+        <div id="u165_text" class="text ">
+          <p><span>共享</span></p>
+        </div>
+      </label>
+      <input id="u165_input" type="radio" value="1" name="type" checked/>
+    </div>
+
+    <!-- Unnamed (单选按钮) -->
+    <div id="u166" class="ax_default radio_button">
+      <label for="u166_input" style="position: absolute; left: 0px;">
+        <div id="u166_text" class="text ">
+          <p><span>独立</span></p>
+        </div>
+      </label>
+      <input id="u166_input" type="radio" value="2" name="type"/>
+    </div>
+
+    <!-- Unnamed (矩形) -->
+    <div id="u167" class="ax_default _二级标题">
+      <div id="u167_div" class=""></div>
+      <div id="u167_text" class="text ">
+        <p><span>描述：</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

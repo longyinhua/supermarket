@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>消费查询</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/消费查询/styles1.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/prototypePre.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/prototypePost.js"></script>
+    <script src="files/消费查询/data.js"></script>
+    <script type="text/javascript">
+        $axure.utils.getTransparentGifPath = function () {
+            return 'resources/images/transparent.gif';
+        };
+        $axure.utils.getOtherPath = function () {
+            return 'resources/Other.html';
+        };
+        $axure.utils.getReloadPath = function () {
+            return 'resources/reload.html';
+        };
+    </script>
+</head>
+<body>
+<div id="base" class="">
+
+    <!-- Unnamed (水平线) -->
+    <div id="u325" class="ax_default line">
+        <img id="u325_img" class="img " src="images/卡片管理/u13.png"/>
+    </div>
+
+    <!-- Unnamed (矩形) -->
+    <div id="u326" class="ax_default button" onclick="searchs()">
+        <div id="u326_div" class=""></div>
+        <div id="u326_text" class="text ">
+            <p><span>查询</span></p>
+        </div>
+    </div>
+    <!--表格-->
+    <div class="ax_default" id="u327">
+        <table id="table"   width="100%">
+            <tr><th>名称</th><th>统计时间起</th><th>统计时间止</th><th>最终消费时间</th><th>累计消费金额</th><th>购买商品数量</th><th>余额</th><th>操作</th></tr>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Unnamed (组合 ) -->
+    <div id="u476" class="ax_default" data-left="21" data-top="99" data-width="323" data-height="40">
+
+        <!-- Unnamed (矩形) -->
+        <div id="u477" class="ax_default box_1">
+            <div id="u477_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (矩形) -->
+        <div id="u478" class="ax_default _二级标题">
+            <div id="u478_div" class=""></div>
+            <div id="u478_text" class="text ">
+                <p><span>卡片</span></p>
+            </div>
+        </div>
+
+        <!-- Unnamed (矩形) -->
+        <div id="u479" class="ax_default box_2">
+            <input type="text" class="u479_div" id="cardName"/>
+        </div>
+    </div>
+
+    <!-- Unnamed (组合 ) -->
+    <div id="u480" class="ax_default" data-left="350" data-top="99" data-width="323" data-height="40">
+
+        <!-- Unnamed (矩形) -->
+        <div id="u481" class="ax_default box_1">
+            <div id="u481_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (矩形) -->
+        <div id="u482" class="ax_default _二级标题">
+            <div id="u482_div" class=""></div>
+            <div id="u482_text" class="text ">
+                <p><span>统计日期至</span></p>
+            </div>
+        </div>
+
+        <!-- Unnamed (矩形) -->
+        <div id="u483" class="ax_default box_2">
+            <div id="u483_div" class="">
+
+            </div>
+            <input type="date" class="u483_div" id="begintime"/>
+        </div>
+    </div>
+
+    <!-- Unnamed (组合 ) -->
+    <div id="u484" class="ax_default" data-left="683" data-top="99" data-width="323" data-height="40">
+
+        <!-- Unnamed (矩形) -->
+        <div id="u485" class="ax_default box_1">
+            <div id="u485_div" class=""></div>
+
+        </div>
+
+        <!-- Unnamed (矩形) -->
+        <div id="u486" class="ax_default _二级标题">
+            <div id="u486_div" class=""></div>
+            <div id="u486_text" class="text ">
+                <p><span>统计日期至</span></p>
+            </div>
+        </div>
+
+        <!-- Unnamed (矩形) -->
+        <div id="u487" class="ax_default box_2">
+            <div id="u487_div" class="">
+                <input type="date" class="u487_div" id="endtime"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unnamed (矩形) -->
+    <div  id="dc" class="ax_default button" style="cursor: pointer;" onclick='tableToExcel()'>
+        <div id="dc_div" class=""></div>
+        <div id="dc_text" class="text ">
+            <p><span>导出</span></p>
+        </div>
+    </div>
+    <div  id="dr" class="ax_default button">
+        <div id="dr_div" class=""></div>
+        <div id="dr_text" class="text ">
+            <div style="margin-top: 14px;left: 38px;position: absolute;"><p><span>导入</span></p></div>
+            <input style="opacity: 0;height: 42px;width: 110px;cursor: pointer;" type="file" onchange="top.importExcel(this,'INSERT INTO DETAIL (id,cardcode,goodscode,num,price,amount,createtime) VALUES (?,?,?,?,?,?,?)')"/>
+        </div>
+    </div>
+
+
+    <!-- 消费 (组合 ) -->
+    <div id="u494" class="ax_default ax_default_hidden" data-label="消费" style="display:none; visibility: hidden"
+         data-left="0" data-top="0" data-width="0" data-height="0">
+
+
+        <!-- Unnamed (矩形) -->
+        <div id="u495" class="ax_default box_2">
+            <div id="u495_div" class=""></div>
+        </div>
+
+
+        <!-- Unnamed (组合 ) -->
+        <div id="u496" class="ax_default" data-left="0" data-top="0" data-width="0" data-height="0">
+
+            <!-- Unnamed (矩形) -->
+            <div id="u497" class="ax_default box_2">
+                <div id="u497_div" class=""></div>
+                <div id="str" style="width:1200px;height: 666px;overflow-y:scroll;margin-top: 83px;">
+
+                </div>
+
+            </div>
+
+
+            <!-- Unnamed (垂直线) -->
+            <div id="u498" class="ax_default line">
+                <img id="u498_img" class="img " src="images/消费查询/u498.png"/>
+            </div>
+
+            <!-- Unnamed (垂直线) -->
+            <div id="u499" class="ax_default line">
+                <img id="u499_img" class="img " src="images/消费查询/u498.png"/>
+            </div>
+
+            <!-- Unnamed (垂直线) -->
+            <div id="u500" class="ax_default line">
+                <img id="u500_img" class="img " src="images/消费查询/u498.png"/>
+            </div>
+
+            <!-- Unnamed (水平线) -->
+            <div id="u501" class="ax_default line">
+                <img id="u501_img" class="img " src="images/消费查询/u501.png"/>
+            </div>
+
+
+            <!-- Unnamed (矩形) -->
+            <div id="u502" class="ax_default _三级标题">
+                <div id="u502_div" class=""></div>
+                <div id="u502_text" class="text ">
+                    <p><span>商品名称</span></p>
+                </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u503" class="ax_default _三级标题">
+                <div id="u503_div" class=""></div>
+                <div id="u503_text" class="text ">
+                    <p><span>单价</span></p>
+                </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u504" class="ax_default _三级标题">
+                <div id="u504_div" class=""></div>
+                <div id="u504_text" class="text ">
+                    <p><span>数量</span></p>
+                </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u505" class="ax_default _三级标题">
+                <div id="u505_div" class=""></div>
+                <div id="u505_text" class="text ">
+                    <p><span>金额</span></p>
+                </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u506" class="ax_default _三级标题">
+                <div id="u506_div" class=""></div>
+                <div id="u506_text" class="text ">
+                    <p><span>小计：</span></p>
+                </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u507" class="ax_default label">
+                <div id="u507_div" class=""></div>
+                <div id="u507_text" class="text ">
+                    <p><span style="color:#00B2DF;" id="sum"></span><span>￥</span></p>
+                </div>
+
+            </div>
+            <!-- Unnamed (垂直线) -->
+            <div id="u508" class="ax_default line">
+                <img id="u508_img" class="img " src="images/消费查询/u498.png"/>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u509" class="ax_default _三级标题">
+                <div id="u509_div" class=""></div>
+                <div id="u509_text" class="text ">
+                    <p><span>序号</span></p>
+                </div>
+            </div>
+
+
+
+
+            </div>
+
+
+
+            <!-- Unnamed (矩形) -->
+            <div id="u519" class="ax_default primary_button" onclick="printpanle()">
+                <div id="u519_div" class=""></div>
+                <div id="u519_text" class="text ">
+                    <p><span>打印</span></p>
+                </div>
+            </div>
+
+            <!-- Unnamed (矩形) -->
+            <div id="u520" class="ax_default primary_button" onclick="closepanles()">
+                <div id="u520_div" class=""></div>
+                <div id="u520_text" class="text ">
+                    <p><span>关闭</span></p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

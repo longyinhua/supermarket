@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>售卖管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/售卖管理/styles1.css" type="text/css" rel="stylesheet"/>
+	<link href="files/售卖管理/shopcar.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/prototypePre.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/prototypePost.js"></script>
+    <script src="files/售卖管理/data.js"></script>
+	<script src="files/售卖管理/auto-size.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+	<div class="mainDiv">
+		<div style="padding: 5px">
+		  <!---->
+		  <input type="text" id="code" style="opacity: 0" onblur="this.focus()"  class="inputClass" onchange="getCode()">
+		 <!-- <button class="ant-btn ant-btn-primary" onclick="test()">测试</button>
+		 <input type="file" onchange="top.importExcel(this,'INSERT INTO GOODS (code,name,price,num) VALUES (?, ?, ?, ?)')">-->
+		</div>
+		<div style="margin-top: 10px;height:900px;overflow-y: auto">
+			<div id="mainBody">
+			</div>
+			<div style="height: 10px;"></div>
+	</div>
+	<div class="totalBottom">
+	  <div id="totalP" class="totalP">
+		  <div align="center">小计</div>
+		  <div align="center" style="margin-top: 5px;">
+			  <span>¥</span>
+			  <span id="total"></span>
+		  </div>
+	  </div>
+	</div>
+	</div>
+  </body>
+</html>
